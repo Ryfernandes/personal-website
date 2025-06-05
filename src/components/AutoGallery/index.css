@@ -1,0 +1,34 @@
+/* /src/app/components/AutoGallery/index.css */
+
+.auto-gallery-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;;
+}
+
+.auto-gallery-track {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+}
+
+.auto-gallery-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.auto-gallery-image-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.auto-gallery-image {
+  object-fit: cover;
+  position: relative !important;
+}
