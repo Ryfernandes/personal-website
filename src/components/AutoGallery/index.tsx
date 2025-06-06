@@ -92,11 +92,12 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
     const animate = () => {
       setPosition(prevPosition => {
         // Move position to the left
-        let newPosition = prevPosition - 1;
+        let newPosition = prevPosition - (speed / 60); // For smoother movement based on speed
         
-        // If a column is completely off screen to the left, 
-        // wrap it around to the right side
-        if (newPosition <= -columnWidth) {
+        // Reset position when first set of columns is completely off screen
+        // This creates the seamless loop effect
+        const resetPoint = -(columnWidth * columns.length);
+        if (newPosition <= resetPoint) {
           newPosition = 0;
         }
         
