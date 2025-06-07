@@ -8,6 +8,7 @@ import './index.css';
 
 interface AutoGalleryProps {
   images: string[];      // Array of image URLs/references
+  captions: string[];    // Captions in order for each image
   rows: number;          // Default number of rows for large screens
   inspect?: boolean;   // Determines whether to show image description tooltip
   smallBreakpoint?: {    // First breakpoint (switch to 2 rows)
@@ -25,6 +26,7 @@ interface AutoGalleryProps {
 
 const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({ 
   images, 
+  captions,
   rows,
   inspect,
   smallBreakpoint = { ratio: 3, rows: 2 },
@@ -196,7 +198,7 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
                   hoveredImage.col === colIndex && 
                   hoveredImage.row === imgIndex && (
                   <div className={`image-tooltip ${colIndex * columnWidth + position < 0 ? 'off-left' : ''} ${colIndex * columnWidth + position > window.innerWidth ? 'off-right' : ''}`}>
-                    placeholder here to see how it looks
+                    {captions[(colIndex * effectiveRows + imgIndex) % (columns.length * effectiveRows)] || "No caption available"}
                   </div>
                 )}
               </div>

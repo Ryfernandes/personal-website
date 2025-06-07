@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import './index.css';
 import AutoGallery from "@/components/AutoGallery";
+import imageCaptions from "@/utils/captions";
 
 export default function Home() {
   let images: string[] = [];
@@ -27,6 +28,7 @@ export default function Home() {
       <div className="gallery-container">
         <AutoGallery 
           images={images}
+          captions={imageCaptions}
           rows={3}
           inspect={inspect}
           smallBreakpoint={{ ratio: 3, rows: 2 }}
