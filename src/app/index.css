@@ -2,7 +2,8 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  position: relative; /* Add position relative */
+  position: relative;
+  background-color: black;
 }
 
 .overlay-text {
@@ -16,10 +17,13 @@
   text-align: center;
   width: 80%;
   max-width: 650px;
-  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
   transition: transform 0.1s ease;
   user-select: none;
-  font-family: 'Georgia';
+}
+
+.overlay-text h1 {
+  font-weight: 500;
 }
 
 .overlay-text:hover {
@@ -30,12 +34,6 @@
 .overlay-text:active {
   transform: translate(-50%, -50%) scale(0.98);
   cursor: pointer;
-}
-
-.overlay-subtitle {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
 }
 
 .underlined {
@@ -51,6 +49,7 @@
   background-color: rgb(25, 14, 79);
   border: solid 2px rgb(147, 125, 255);
   color: white;
+  opacity: 0.6;
   justify-content: center;
   display: flex;
   align-items: center;;
@@ -58,11 +57,14 @@
   width: 4rem;
   height: 4rem;
   font-size: 2.2rem;
-  font-family: 'Inter', sans-serif;
   font-weight: 600;
   transition: transform 0.1s ease;
   user-select: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.details-button.active {
+  opacity: 1;
 }
 
 .details-button:hover {
@@ -86,7 +88,66 @@
 }
 
 .page-container {
-  
   width: 100%;
   height: 100%;
+}
+
+.typewriter {
+  display: inline-block;
+}
+
+.typewriter p {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  width: 100%;
+  animation: typing 1.5s steps(12, end) , blink 1s step-end infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: white }
+  50% { border-color: transparent }
+}
+
+@media (max-width: 768px) {
+  .overlay-text h1 {
+    font-size: 3rem;
+  }
+
+  .overlay-text p {
+    font-size: 1.2rem;
+  }
+
+  .details-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+    top: 3rem;
+    left: 3rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .overlay-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .overlay-text p {
+    font-size: 0.8rem;
+  }
+
+  .details-button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    top: 2rem;
+    left: 2rem;
+  }
 }

@@ -129,9 +129,6 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
   useEffect(() => {
     if (!isInitialized || !columnWidth || columns.length === 0) return;
     
-    // Only animate when not in inspect mode
-    if (inspect) return;
-    
     const animate = () => {
       setPosition(prevPosition => {
         // Move position to the left
@@ -194,6 +191,7 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
                   priority={colIndex === 0 && imgIndex === 0}
                   draggable="false"
                 />
+                <div className="filter"/>
                 {inspect && hoveredImage && 
                   hoveredImage.col === colIndex && 
                   hoveredImage.row === imgIndex && (

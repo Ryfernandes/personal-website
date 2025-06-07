@@ -10,7 +10,7 @@ import imageCaptions from "@/utils/captions";
 export default function Gallery() {
   let images: string[] = [];
 
-  const [inspect, setInspect] = useState(false);
+  const [inspect, setInspect] = useState(true);
 
   const router = useRouter();
 
@@ -40,31 +40,18 @@ export default function Gallery() {
           inspect={inspect}
           smallBreakpoint={{ ratio: 3, rows: 2 }}
           xSmallBreakpoint={{ ratio: 7, rows: 1 }}
-          speed={inspect ? 0 : 55}
+          speed={55}
           scale={1}
-          gap={0}
+          gap={2}
         />
         <div className="overlay-text" onClick={handleOverlayClick}>
           <h1>Ryan Fernandes</h1>
-          <div className="overlay-subtitle">
-            <p className="underlined">Click here and be amazed</p>
-            <p>→</p>
-          </div>
+          <span className="typewriter">
+            <p>Who is this guy? →</p>
+          </span>
         </div>
-        <div className="details-button" onClick={handleInspectClick}>
-          {inspect ? (
-            <svg 
-              width="2.4rem" 
-              height="2.4rem" 
-              viewBox="0 0 16 16" 
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ fill: "white" }}
-            >
-              <polygon points="5,2 13,8 5,14" />
-            </svg>
-          ) : (
-            "?"
-          )}
+        <div className={`details-button ${inspect && "active"}`} onClick={handleInspectClick}>
+          ?
         </div>
       </div>
     </div>
