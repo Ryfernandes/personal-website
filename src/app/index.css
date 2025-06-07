@@ -16,9 +16,10 @@
   text-align: center;
   width: 80%;
   max-width: 650px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9);
   transition: transform 0.1s ease;
   user-select: none;
+  font-family: 'Georgia';
 }
 
 .overlay-text:hover {
