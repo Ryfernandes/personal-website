@@ -1,15 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import './index.css';
 import AutoGallery from "@/components/AutoGallery";
 import imageCaptions from "@/utils/captions";
 
-export default function Home() {
+export default function Gallery() {
   let images: string[] = [];
 
   const [inspect, setInspect] = useState(false);
+
+  const router = useRouter();
 
   for (let i = 1; i <= 30; i++) {
     images.push(`/assets/gallery/${i}.jpeg`);
@@ -22,6 +25,10 @@ export default function Home() {
       setInspect(true);
     }
   }
+
+  const handleOverlayClick = () => {
+    router.push('/home');
+  };
 
   return (
     <div className="page-container">
@@ -37,9 +44,12 @@ export default function Home() {
           scale={1}
           gap={0}
         />
-        <div className="overlay-text" onClick={() => alert("Not yet")}>
+        <div className="overlay-text" onClick={handleOverlayClick}>
           <h1>Ryan Fernandes</h1>
-          <p>Click here and be amazed&nbsp;&nbsp;→</p>
+          <div className="overlay-subtitle">
+            <p className="underlined">Click here and be amazed</p>
+            <p>→</p>
+          </div>
         </div>
         <div className="details-button" onClick={handleInspectClick}>
           {inspect ? (
