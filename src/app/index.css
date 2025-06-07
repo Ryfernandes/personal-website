@@ -18,6 +18,38 @@
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+.details-button {
+  position: absolute;
+  top: calc(100% - 4rem);
+  left: 4rem;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background-color: rgb(25, 14, 79);
+  border: solid 2px rgb(147, 125, 255);
+  color: white;
+  justify-content: center;
+  display: flex;
+  align-items: center;;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.details-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  cursor: pointer;
+}
+
+.details-button:active {
+  transform: translate(-50%, -50%) scale(0.95);
+  cursor: pointer;
+}
+
 .overlay-text h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -26,4 +58,10 @@
 .overlay-text p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.page-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }

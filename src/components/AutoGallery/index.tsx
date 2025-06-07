@@ -7,16 +7,28 @@ import Image from 'next/image';
 import './index.css';
 
 interface AutoGalleryProps {
-  images: string[];     // Array of image URLs/references
-  rows: number;         // Number of rows in the grid
-  speed?: number;       // Optional: Animation speed in pixels per second (default: 50)
-  scale?: number;       // Optional: Scale factor for images (default: 1)
-  gap?: number;         // Optional: Gap between images in pixels (default: 8)
+  images: string[];      // Array of image URLs/references
+  rows: number;          // Default number of rows for large screens
+  inspect?: boolean;   // Determines whether to show image description tooltip
+  smallBreakpoint?: {    // First breakpoint (switch to 2 rows)
+    ratio: number;      // Width to height ratio
+    rows: number;        // Number of rows (typically 2)
+  };
+  xSmallBreakpoint?: {   // Second breakpoint (switch to 1 row)
+    ratio: number;      // Width to height ratio
+    rows: number;        // Number of rows (typically 1)
+  };
+  speed?: number;        // Animation speed in pixels per second
+  scale?: number;        // Scale factor for images
+  gap?: number;          // Gap between images in pixels
 }
 
 const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({ 
   images, 
   rows,
+  inspect,
+  smallBreakpoint = { ratio: 3, rows: 2 },
+  xSmallBreakpoint = { ratio: 7, rows: 1 },
   speed = 50,
   scale = 1,
   gap = 8
@@ -27,53 +39,79 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
   const [columnWidth, setColumnWidth] = useState(0);
   const [columns, setColumns] = useState<string[][]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [effectiveRows, setEffectiveRows] = useState(rows);
+  const [hoveredImage, setHoveredImage] = useState<{col: number, row: number} | null>(null);
 
-  // Validate that images count is divisible by rows
+  // Determine effective row count based on screen height and breakpoints
+  const updateEffectiveRows = () => {
+    const screenHeight = window.innerHeight;
+    const screenWidth = window.innerWidth;
+    
+    if (screenWidth / screenHeight >= xSmallBreakpoint.ratio) {
+      return xSmallBreakpoint.rows;
+    } else if (screenWidth / screenHeight >= smallBreakpoint.ratio) {
+      return smallBreakpoint.rows;
+    } else {
+      return rows;
+    }
+  };
+
+  // Organize images into columns based on the current row count
   useEffect(() => {
-    if (images.length % rows !== 0) {
-      console.error('AutoGallery: Number of images must be divisible by the number of rows');
+    // First update effective rows based on current screen size
+    const newEffectiveRows = updateEffectiveRows();
+    setEffectiveRows(newEffectiveRows);
+    
+    // Then organize images based on that row count
+    if (images.length % newEffectiveRows !== 0) {
+      console.error(`AutoGallery: Number of images (${images.length}) must be divisible by the effective row count (${newEffectiveRows})`);
       return;
     }
     
-    // Organize images into columns (each column has 'rows' number of images)
-    const columnsCount = images.length / rows;
+    // Organize images into columns (each column has 'effectiveRows' number of images)
+    const columnsCount = images.length / newEffectiveRows;
     const organizedColumns: string[][] = [];
     
     for (let col = 0; col < columnsCount; col++) {
       const columnImages: string[] = [];
-      for (let row = 0; row < rows; row++) {
+      for (let row = 0; row < newEffectiveRows; row++) {
         columnImages.push(images[col + row * columnsCount]);
       }
       organizedColumns.push(columnImages);
     }
     
     setColumns(organizedColumns);
-  }, [images, rows]);
+  }, [images, rows, effectiveRows, smallBreakpoint, xSmallBreakpoint]);
 
-  // Calculate dimensions on mount and window resize with a slight delay to ensure DOM is ready
+  // Calculate dimensions on mount and window resize
   useEffect(() => {
     const calculateDimensions = () => {
       if (!containerRef.current) return;
       
+      // First check if we need to update the row count based on screen height
+      const newEffectiveRows = updateEffectiveRows();
+      if (newEffectiveRows !== effectiveRows) {
+        setEffectiveRows(newEffectiveRows);
+        return; // This will trigger the previous useEffect to reorganize columns
+      }
+      
       const windowWidth = window.innerWidth;
-      // Image size is calculated based on container height divided by rows
       const containerHeight = containerRef.current.clientHeight;
       
       // Check if we have a valid container height
       if (containerHeight <= 0) {
-        // Try again after a short delay if container height is not ready
         setTimeout(calculateDimensions, 100);
         return;
       }
       
-      const imageSize = (containerHeight / rows) * scale;
+      const imageSize = (containerHeight / effectiveRows) * scale;
       
       setColumnWidth(imageSize + gap);
       setContainerWidth(windowWidth + imageSize * 2);
       setIsInitialized(true);
     };
 
-    // Initial calculation with a slight delay to ensure DOM is rendered
+    // Initial calculation with a delay to ensure DOM is rendered
     const initialTimer = setTimeout(calculateDimensions, 50);
     
     // Also handle window resizes
@@ -83,19 +121,21 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
       clearTimeout(initialTimer);
       window.removeEventListener('resize', calculateDimensions);
     };
-  }, [rows, scale, gap]);
+  }, [effectiveRows, scale, gap, smallBreakpoint, xSmallBreakpoint]);
 
   // Animation effect - only start once dimensions are calculated
   useEffect(() => {
     if (!isInitialized || !columnWidth || columns.length === 0) return;
     
+    // Only animate when not in inspect mode
+    if (inspect) return;
+    
     const animate = () => {
       setPosition(prevPosition => {
         // Move position to the left
-        let newPosition = prevPosition - (speed / 60); // For smoother movement based on speed
+        let newPosition = prevPosition - (speed / 60);
         
         // Reset position when first set of columns is completely off screen
-        // This creates the seamless loop effect
         const resetPoint = -(columnWidth * columns.length);
         if (newPosition <= resetPoint) {
           newPosition = 0;
@@ -105,15 +145,14 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
       });
     };
     
-    // Set up animation interval based on speed
-    const frameRate = 60; // fps
+    const frameRate = 60;
     const interval = setInterval(animate, 1000 / frameRate);
     
     return () => clearInterval(interval);
-  }, [columns, columnWidth, speed, isInitialized]);
+  }, [columns, columnWidth, speed, isInitialized, inspect]);
 
   // If not ready to render or invalid input, return placeholder
-  if (columns.length === 0 || images.length % rows !== 0) {
+  if (columns.length === 0 || images.length % effectiveRows !== 0) {
     return <div className="auto-gallery-container">Loading gallery...</div>;
   }
 
@@ -123,7 +162,7 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
         className="auto-gallery-track" 
         style={{ 
           transform: `translateX(${position}px)`,
-          width: `${columns.length * columnWidth * 2}px` // Double the columns for continuous effect
+          width: `${columns.length * columnWidth * 2}px`
         }}
       >
         {/* Render columns twice for seamless looping */}
@@ -135,21 +174,31 @@ const AutoGallery: React.FunctionComponent<AutoGalleryProps> = ({
           >
             {column.map((image, imgIndex) => (
               <div 
-                className="auto-gallery-image-container"
+                className={`auto-gallery-image-container ${inspect && 'inspect'}`}
                 key={imgIndex}
                 style={{ 
                   paddingBottom: `${gap}px`,
-                  height: `calc((100% - ${(rows-1) * gap}px) / ${rows})` 
+                  height: `calc((100% - ${(effectiveRows-1) * gap}px) / ${effectiveRows})` 
                 }}
+                onMouseEnter={() => inspect && setHoveredImage({col: colIndex, row: imgIndex})}
+                onMouseLeave={() => inspect && setHoveredImage(null)}
               >
                 <Image 
                   src={image} 
-                  alt={`Gallery image ${colIndex * rows + imgIndex}`}
+                  alt={`Gallery image ${colIndex * effectiveRows + imgIndex}`}
                   className="auto-gallery-image"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   priority={colIndex === 0 && imgIndex === 0}
+                  draggable="false"
                 />
+                {inspect && hoveredImage && 
+                  hoveredImage.col === colIndex && 
+                  hoveredImage.row === imgIndex && (
+                  <div className={`image-tooltip ${colIndex * columnWidth + position < 0 ? 'off-left' : ''} ${colIndex * columnWidth + position > window.innerWidth ? 'off-right' : ''}`}>
+                    placeholder here to see how it looks
+                  </div>
+                )}
               </div>
             ))}
           </div>

@@ -6,6 +6,7 @@
   overflow: hidden;
   position: relative;
   display: flex;
+  user-select: none;
 }
 
 .auto-gallery-track {
@@ -24,10 +25,32 @@
 .auto-gallery-image-container {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.auto-gallery-image-container.inspect {
+  cursor: help;
 }
 
 .auto-gallery-image {
   object-fit: cover;
   position: relative !important;
+}
+
+.image-tooltip {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;  /* Increased z-index */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  border: 1px solid #ccc;
+  width: 80%;
+  text-align: center;
 }
