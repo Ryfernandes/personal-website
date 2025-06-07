@@ -41,7 +41,6 @@
   position: absolute;
   background-color: rgb(25, 14, 79);
   color: white;
-  opacity: 0.75;
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 14px;
@@ -52,6 +51,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   pointer-events: none;
   border: 0.5px solid rgb(147, 125, 255);
+  opacity: 0.75;
   width: 80%;
   text-align: center;
 }

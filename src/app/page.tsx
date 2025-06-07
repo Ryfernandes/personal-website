@@ -37,9 +37,9 @@ export default function Home() {
           scale={1}
           gap={0}
         />
-        <div className="overlay-text">
+        <div className="overlay-text" onClick={() => alert("Not yet")}>
           <h1>Ryan Fernandes</h1>
-          <p>Welcome to my terrible website</p>
+          <p>Click here and be amazed&nbsp;&nbsp;→</p>
         </div>
         <div className="details-button" onClick={handleInspectClick}>
           {inspect ? (

@@ -12,10 +12,26 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   color: white;
+  background-color: rgb(25, 14, 79, 0.3);
+  border-radius: 2rem;
+  border: 1px solid rgb(147, 125, 255);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   text-align: center;
-  width: 80%;
-  max-width: 800px;
+  width: 70%;
+  max-width: 650px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.overlay-text:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  cursor: pointer;
+}
+
+.overlay-text:active {
+  transform: translate(-50%, -50%) scale(0.98);
+  cursor: pointer;
 }
 
 .details-button {
