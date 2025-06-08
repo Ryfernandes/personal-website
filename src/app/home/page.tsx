@@ -9,7 +9,7 @@ import { IconFileText, IconMail, IconBrandGithub, IconBrandLinkedin, IconBrandIn
 import technicalLogos from '@/utils/logos';
 
 export default function Home() {
-  const [logoSize, setLogoSize] = useState(40);
+  const [logoSize, setLogoSize] = useState(window.innerWidth < 600 ? 20 : 40);
   const [techLogoSize, setTechLogoSize] = useState(40);
   const [logoDescriptor, setLogoDescriptor] = useState('');
 
@@ -22,6 +22,12 @@ export default function Home() {
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
+
+      if (windowWidth < 600) {
+        setLogoSize(20);
+      } else {
+        setLogoSize(40);
+      }
     }
 
     handleResize();
@@ -65,13 +71,6 @@ export default function Home() {
         </div>
         <div className="content">
           <div>
-            <Image
-              src="/assets/square-ryan.jpeg"
-              alt="Ryan Fernandes Logo"
-              width={500}
-              height={500}
-              className='ryan-logo'
-            />
             <h2>Hi, I'm Ryan</h2>
             <p>
               and I'm a sophomore studying Electrical Engineering and Computer
