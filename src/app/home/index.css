@@ -32,22 +32,66 @@
   align-items: center;
 }
 
+@keyframes scrollUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growContent {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .content-container {
   padding: 6rem 1.5em 1.5rem;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.empty {
+.ryan {
   flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ryan-image {
+  position: fixed;
+  width: 30%;
+  height: auto;
+  max-width: 500px;
+  transform: none;
+  animation: scrollUp 1.2s ease-out forwards;
 }
 
 .content {
   flex: 1;
   padding: 0 4rem;
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  opacity: 0;
+  animation: growContent 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.inspiration {
+  margin-top: 2rem;
+  font-size: 0.8rem;
 }
 
 .content a {
@@ -96,4 +140,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.ryan-logo {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .ryan {
+    display: none;
+  }
+
+  .content-container {
+    padding: 3rem 0rem;
+  }
+
+  .ryan-logo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 2rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
 }

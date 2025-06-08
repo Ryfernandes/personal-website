@@ -54,9 +54,24 @@ export default function Home() {
         </div>
       </div>
       <div className="content-container">
-        <div className="empty"></div>
+        <div className="ryan">
+          <Image
+            src="/assets/ryan-standing.png"
+            alt="Ryan Fernandes"
+            width={500}
+            height={2500}
+            className='ryan-image'
+          />  
+        </div>
         <div className="content">
           <div>
+            <Image
+              src="/assets/square-ryan.jpeg"
+              alt="Ryan Fernandes Logo"
+              width={500}
+              height={500}
+              className='ryan-logo'
+            />
             <h2>Hi, I'm Ryan</h2>
             <p>
               and I'm a sophomore studying Electrical Engineering and Computer
@@ -93,6 +108,20 @@ export default function Home() {
               . Or, return to the{" "}
               <a onClick={backToGallery}>gallery</a>
               {" "}to check out some snapshots from my life!
+            </p>
+            <p className="inspiration">
+              Webiste inspiration from:{" "}
+                <a href="https://addisongoolsbee.com/#/" target="_blank" rel="noopener noreferrer">
+                  Addison Goolsbee
+                </a>
+              ,{" "}
+                <a href="https://ethanmathieu.com/" target="_blank" rel="noopener noreferrer">
+                  Ethan Mathieu
+                </a>
+              , and{" "}
+                <a href="https://www.filippofonseca.com/" target="_blank" rel="noopener noreferrer">
+                  Filippo Fonseca
+                </a>
             </p>
           </div>
           <div>
@@ -135,14 +164,14 @@ export default function Home() {
               </p>
               <p>
                 Contributions:
-                <ul>
-                  <li key={1}>Created a brand new MongoDB schema system with denormalized patterns for faster searches</li>
-                  <li key={2}>Restructured authentication and data handling for {">"}6k user profiles</li>
-                  <li key={3}>Secured backend routes and wrote microservices for search, account creation, listing manipulation</li>
-                  <li key={4}>Redesigned the entire frontend and 2 new pages. Later implemented Design at Yale suggestions</li>
-                  <li key={5}>Led team through feature planning/delegation and coordinated launch/marketing</li>
-                </ul>
               </p>
+              <ul>
+                <li key={1}>Created a brand new MongoDB schema system with denormalized patterns for faster searches</li>
+                <li key={2}>Restructured authentication and data handling for {">"}6k user profiles</li>
+                <li key={3}>Secured backend routes and wrote microservices for search, account creation, listing manipulation</li>
+                <li key={4}>Redesigned the entire frontend and 2 new pages. Later implemented Design at Yale suggestions</li>
+                <li key={5}>Led team through feature planning/delegation and coordinated launch/marketing</li>
+              </ul>
             </div>
             <div className='project'>
               <div className='project-header'>
@@ -172,11 +201,11 @@ export default function Home() {
               </p>
               <p>
                 Contributions:
-                <ul>
-                  <li key={1}>Authored sponsorship propendum, packages and contracts, coordinating with interested sponsors</li>
-                  <li key={2}>Collaborating on plans and building network for a collegiate tech union</li>
-                </ul>
               </p>
+              <ul>
+                <li key={1}>Authored sponsorship propendum, packages and contracts, coordinating with interested sponsors</li>
+                <li key={2}>Collaborating on plans and building network for a collegiate tech union</li>
+              </ul>
             </div>
             <div className='project'>
               <div className='project-header'>
@@ -197,16 +226,16 @@ export default function Home() {
               </p>
               <p>
                 Contributions:
-                <ul>
-                  <li key={1}>Created a full Figma wireframe for every stage of the re-imagined document conversion process</li>
-                  <li key={2}>Presented wireframe to UX and engineering teams to update wireframe with feedback</li>
-                  <li key={3}>Implemented Stages 1 and 2 in a Next.js project, up to creation and assignment of conversion profiles</li>
-                  <li key={4}>
-                    Created a fully parameterized table component to add to Red Hat's Patternfly component library with
-                    sorting, SHIFT/CTRL multi-select connected to button/dropdown actions and element removal
-                  </li>
-                </ul>
               </p>
+              <ul>
+                <li key={1}>Created a full Figma wireframe for every stage of the re-imagined document conversion process</li>
+                <li key={2}>Presented wireframe to UX and engineering teams to update wireframe with feedback</li>
+                <li key={3}>Implemented Stages 1 and 2 in a Next.js project, up to creation and assignment of conversion profiles</li>
+                <li key={4}>
+                  Created a fully parameterized table component to add to Red Hat's Patternfly component library with
+                  sorting, SHIFT/CTRL multi-select connected to button/dropdown actions and element removal
+                </li>
+              </ul>
             </div>
             <div className='project'>
               <div className='project-header'>
@@ -231,12 +260,12 @@ export default function Home() {
               </p>
               <p>
                 Contributions:
-                <ul>
-                  <li key={1}>Set up  up a Vite framework for the scores/results website with a navbar, page routing and sample data</li>
-                  <li key={2}>Created simple placeholder displays for race results and individual lap times</li>
-                  <li key={3}>Began design and implementation of our database on Firestore to leverage realtime updates</li>
-                </ul>
               </p>
+              <ul>
+                <li key={1}>Set up  up a Vite framework for the scores/results website with a navbar, page routing and sample data</li>
+                <li key={2}>Created simple placeholder displays for race results and individual lap times</li>
+                <li key={3}>Began design and implementation of our database on Firestore to leverage realtime updates</li>
+              </ul>
             </div>
           </div>
 
