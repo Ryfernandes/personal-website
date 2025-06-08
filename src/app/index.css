@@ -40,43 +40,6 @@
   text-decoration: underline;
 }
 
-.details-button {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-  transform: translate(-50%, -50%);
-  z-index: 20;
-  background-color: rgb(25, 14, 79);
-  border: solid 2px rgb(147, 125, 255);
-  color: white;
-  opacity: 0.6;
-  justify-content: center;
-  display: flex;
-  align-items: center;;
-  border-radius: 100%;
-  width: 4rem;
-  height: 4rem;
-  font-size: 2.2rem;
-  font-weight: 600;
-  transition: transform 0.1s ease;
-  user-select: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-.details-button.active {
-  opacity: 1;
-}
-
-.details-button:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-  cursor: pointer;
-}
-
-.details-button:active {
-  transform: translate(-50%, -50%) scale(0.95);
-  cursor: pointer;
-}
-
 .overlay-text h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
