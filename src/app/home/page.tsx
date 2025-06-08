@@ -9,7 +9,7 @@ import { IconFileText, IconMail, IconBrandGithub, IconBrandLinkedin, IconBrandIn
 import technicalLogos from '@/utils/logos';
 
 export default function Home() {
-  const [logoSize, setLogoSize] = useState(window.innerWidth < 600 ? 20 : 40);
+  const [logoSize, setLogoSize] = useState(20);
   const [techLogoSize, setTechLogoSize] = useState(40);
   const [logoDescriptor, setLogoDescriptor] = useState('');
 
