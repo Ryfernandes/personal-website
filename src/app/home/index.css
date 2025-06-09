@@ -155,6 +155,11 @@
     padding: 3rem 0rem;
   }
 
+  .content {
+    padding: 0rem 1rem;
+    padding-top: 2rem;
+  }
+
   .ryan-logo {
     display: block;
     margin: 0 auto;
