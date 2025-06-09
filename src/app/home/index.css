@@ -32,6 +32,11 @@
   align-items: center;
 }
 
+.links a {
+  opacity: 0;
+  animation: 0.8s growContent 0.8s ease-out forwards;
+}
+
 @keyframes scrollUp {
   0% {
     opacity: 0;
