@@ -208,7 +208,7 @@ export default function Home() {
             </div>
             <div className='project'>
               <div className='project-header'>
-                <a className='inline-block' href="https://beamish-truffle-c1b96c.netlify.app/demo-1" target="_blank" rel="noopener noreferrer">
+                <a className='inline-block' href="https://docling-document-ingestion.netlify.app/feedback-implementation" target="_blank" rel="noopener noreferrer">
                   <h3>Document conversion pipeline (WIP)</h3>
                 </a>
                 <a href="https://github.com/Ryfernandes/next-document-ingestion" target="_blank" rel="noopener noreferrer">
