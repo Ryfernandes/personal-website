@@ -1,4 +1,51 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-gh-canvas: #ffffff;
+  --color-gh-canvas-subtle: #F7F8FA;
+  --color-gh-canvas-inset: #f6f8fa;
+  --color-gh-fg: #1f2328;
+  --color-gh-fg-muted: #656d76;
+  --color-gh-fg-subtle: #6e7781;
+  --color-gh-fg-accent: #0969da;
+  --color-gh-fg-on-emphasis: #ffffff;
+  --color-gh-fg-success: #1a7f37;
+  --color-gh-border: #d0d7de;
+  --color-gh-border-muted: #d8dee4;
+  --color-gh-neutral-muted: #afb8c133;
+  --color-gh-neutral-subtle: #eaecf280;
+  --color-gh-accent-emphasis: #0969da;
+  --color-gh-success-emphasis: #1a7f37;
+  --color-gh-btn-bg: #f6f8fa;
+  --color-gh-btn-hover-bg: #f3f4f6;
+  --color-gh-btn-border: #1b1f2426;
+  --color-gh-btn-primary-bg: #2da44e;
+  --color-gh-btn-primary-hover-bg: #2c974b;
+  --color-gh-header-bg: #24292f;
+  --color-gh-header-fg: #ffffff;
+  --color-gh-header-logo: #f0f6fc;
+  --color-gh-underline-selected: #fd8c73;
+  --color-gh-dir-fill: #54aeff;
+  --color-gh-file-icon: #656d76;
+  --color-gh-badge-bg: #818b981a;
+  --color-gh-badge-fg: #656d76;
+  --color-gh-counter-bg: #afb8c133;
+
+  --font-gh: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  --font-gh-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: white;
   margin: 0;
+  font-family: var(--font-gh);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-gh-fg);
+  background-color: var(--color-gh-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
