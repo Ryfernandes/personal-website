@@ -1,5 +1,4 @@
 import {
-  MarkGithubIcon,
   ThreeBarsIcon,
   TriangleDownIcon,
   PlusIcon,
@@ -19,8 +18,13 @@ export default function GitHubHeader() {
           <ThreeBarsIcon size={16} />
         </button>
 
-        <a href="/" className="text-gh-fg">
-          <MarkGithubIcon size={32} />
+        <a href="/">
+          <img
+            src="/moose_silhouette_logo.svg"
+            alt="Home"
+            width={32}
+            height={32}
+          />
         </a>
 
         <nav className="flex items-center text-sm">
@@ -47,7 +51,7 @@ export default function GitHubHeader() {
       {/* Right */}
       <div className="ml-auto flex items-center gap-2">
         {/* Search */}
-        <div className="hidden items-center gap-2 rounded-md border border-gh-border px-3 py-[5px] text-sm text-gh-fg-muted md:flex lg:w-[272px]">
+        <div className="hidden h-8 items-center gap-2 rounded-md border border-gh-border px-3 text-sm text-gh-fg-muted md:flex lg:w-[272px]">
           <SearchIcon size={14} />
           <span className="flex-1">
             Type{" "}
@@ -64,13 +68,13 @@ export default function GitHubHeader() {
         <div className="flex items-center">
           <button
             type="button"
-            className="flex items-center rounded-l-md border border-gh-btn-border bg-gh-btn-bg px-2 py-1 text-gh-fg-muted hover:bg-gh-btn-hover-bg"
+            className="flex h-8 items-center rounded-l-md border border-gh-btn-border bg-gh-btn-bg px-2 text-gh-fg-muted hover:bg-gh-btn-hover-bg"
           >
             <PlusIcon size={16} />
           </button>
           <button
             type="button"
-            className="-ml-px flex items-center rounded-r-md border border-gh-btn-border bg-gh-btn-bg px-1 py-1 text-gh-fg-muted hover:bg-gh-btn-hover-bg"
+            className="-ml-px flex h-8 items-center rounded-r-md border border-gh-btn-border bg-gh-btn-bg px-1 text-gh-fg-muted hover:bg-gh-btn-hover-bg"
           >
             <TriangleDownIcon size={16} />
           </button>
@@ -78,7 +82,7 @@ export default function GitHubHeader() {
 
         <button
           type="button"
-          className="relative rounded-md p-1.5 text-gh-fg-muted hover:bg-gh-neutral-muted"
+          className="relative flex h-8 w-8 items-center justify-center rounded-md text-gh-fg-muted hover:bg-gh-neutral-muted"
         >
           <InboxIcon size={16} />
         </button>
@@ -86,9 +90,13 @@ export default function GitHubHeader() {
         {/* User avatar */}
         <button
           type="button"
-          className="ml-0.5 flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-gray-300 ring-1 ring-gh-border"
+          className="ml-0.5 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full ring-1 ring-gh-border"
         >
-          <span className="text-[10px] font-bold text-gray-600">R</span>
+          <img
+            src="/frederick.jpeg"
+            alt="User avatar"
+            className="h-full w-full object-cover"
+          />
         </button>
       </div>
     </div>
