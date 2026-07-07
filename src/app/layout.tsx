@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ryfernandes/personal-website",
-  description: "Ryan Fernandes - Personal Website",
+  title: "Ryan Fernandes",
+  description: "Software engineer and builder. Explore my projects, experience, and more.",
+  icons: {
+    icon: "/ryan-github-profile-picture.jpg",
+  },
 };
 
 export default function RootLayout({
