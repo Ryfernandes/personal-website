@@ -22,7 +22,7 @@ interface FileRowProps {
 
 function FileRow({ type, name, message, date }: FileRowProps) {
   return (
-    <div className="group flex items-center border-t border-gh-border-muted px-4 py-[7px] hover:bg-gh-canvas-subtle">
+    <div className="group flex items-center border-t border-gh-border-muted px-4 py-[10px] hover:bg-gh-canvas-subtle">
       <div className="flex w-[180px] shrink-0 items-center gap-2 pr-2">
         {type === "dir" ? (
           <FileDirectoryFillIcon size={16} className="shrink-0 text-gh-dir-fill" />
@@ -31,7 +31,7 @@ function FileRow({ type, name, message, date }: FileRowProps) {
         )}
         <a
           href="#"
-          className="truncate text-sm text-gh-fg-accent hover:underline"
+          className="truncate text-sm font-medium text-gh-fg hover:text-gh-fg-accent hover:underline"
         >
           {name}
         </a>
@@ -134,11 +134,13 @@ export default function FileExplorer() {
       {/* File list container */}
       <div className="overflow-hidden rounded-md border border-gh-border">
         {/* Latest commit bar */}
-        <div className="flex items-center justify-between bg-gh-canvas-subtle px-4 py-[10px]">
+        <div className="flex items-center justify-between bg-gh-canvas-subtle px-4 py-4">
           <div className="flex items-center gap-2 overflow-hidden">
-            <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gray-300">
-              <span className="text-[8px] font-bold text-gray-600">R</span>
-            </div>
+            <img
+              src="/avatar.jpg"
+              alt="Ryfernandes"
+              className="h-5 w-5 shrink-0 rounded-full"
+            />
             <a
               href="#"
               className="shrink-0 text-sm font-semibold text-gh-fg hover:text-gh-fg-accent hover:underline"
@@ -171,7 +173,7 @@ export default function FileExplorer() {
               className="ml-2 flex items-center gap-1 text-gh-fg-muted hover:text-gh-fg-accent"
             >
               <HistoryIcon size={16} />
-              <strong className="text-gh-fg">22</strong> Commits
+              <span className="text-xs font-medium text-gh-fg">22 Commits</span>
             </a>
           </div>
         </div>
@@ -181,64 +183,65 @@ export default function FileExplorer() {
           <FileRow key={file.name} {...file} />
         ))}
 
-        {/* README section */}
-        <div className="border-t border-gh-border">
-          <div className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-2">
+      </div>
+
+      {/* README section */}
+      <div className="mt-4 rounded-md border border-gh-border">
+        <div className="border-b border-gh-border px-4">
+          <div className="-mb-px flex items-center justify-between">
+            <div className="flex items-center gap-2 border-b-2 border-gh-underline-selected py-3.5">
               <BookIcon size={16} className="text-gh-fg-muted" />
               <h2 className="text-sm font-semibold">README</h2>
             </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="rounded p-1 text-gh-fg-muted hover:bg-gh-neutral-muted hover:text-gh-fg-accent"
-              >
-                <PencilIcon size={16} />
-              </button>
-              <button
-                type="button"
-                className="rounded p-1 text-gh-fg-muted hover:bg-gh-neutral-muted hover:text-gh-fg-accent"
-              >
-                <ListUnorderedIcon size={16} />
-              </button>
+            <div className="flex items-center gap-2 py-3.5">
+            <button
+              type="button"
+              className="rounded p-1 text-gh-fg-muted hover:bg-gh-neutral-muted hover:text-gh-fg-accent"
+            >
+              <PencilIcon size={16} />
+            </button>
+            <button
+              type="button"
+              className="rounded p-1 text-gh-fg-muted hover:bg-gh-neutral-muted hover:text-gh-fg-accent"
+            >
+              <ListUnorderedIcon size={16} />
+            </button>
             </div>
           </div>
+        </div>
 
-          <div className="border-t-2 border-gh-underline-selected" />
+        {/* README content */}
+        <div className="px-10 py-8">
+          <p className="text-sm leading-relaxed text-gh-fg">
+            This is a{" "}
+            <a href="#" className="font-semibold text-gh-fg-accent hover:underline">
+              Next.js
+            </a>{" "}
+            project bootstrapped with{" "}
+            <a href="#" className="text-gh-fg-accent hover:underline">
+              <code className="rounded bg-gh-neutral-muted px-1.5 py-0.5 text-sm">
+                create-next-app
+              </code>
+            </a>
+            .
+          </p>
 
-          {/* README content */}
-          <div className="px-10 py-8">
-            <p className="text-sm leading-relaxed text-gh-fg">
-              This is a{" "}
-              <a href="#" className="font-semibold text-gh-fg-accent hover:underline">
-                Next.js
-              </a>{" "}
-              project bootstrapped with{" "}
-              <a href="#" className="text-gh-fg-accent hover:underline">
-                <code className="rounded bg-gh-neutral-muted px-1.5 py-0.5 text-sm">
-                  create-next-app
-                </code>
-              </a>
-              .
-            </p>
-
-            <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-2xl font-semibold">
-              Getting Started
-            </h2>
-            <p className="mb-4 text-sm leading-relaxed text-gh-fg">
-              First, run the development server:
-            </p>
-            <pre className="mb-4 overflow-x-auto rounded-md bg-gh-canvas-subtle p-4 text-sm leading-relaxed">
-              <code className="font-gh-mono text-gh-fg">npm run dev</code>
-            </pre>
-            <p className="text-sm leading-relaxed text-gh-fg">
-              Open{" "}
-              <a href="#" className="text-gh-fg-accent hover:underline">
-                http://localhost:3000
-              </a>{" "}
-              with your browser to see the result.
-            </p>
-          </div>
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-2xl font-semibold">
+            Getting Started
+          </h2>
+          <p className="mb-4 text-sm leading-relaxed text-gh-fg">
+            First, run the development server:
+          </p>
+          <pre className="mb-4 overflow-x-auto rounded-md bg-gh-canvas-subtle p-4 text-sm leading-relaxed">
+            <code className="font-gh-mono text-gh-fg">npm run dev</code>
+          </pre>
+          <p className="text-sm leading-relaxed text-gh-fg">
+            Open{" "}
+            <a href="#" className="text-gh-fg-accent hover:underline">
+              http://localhost:3000
+            </a>{" "}
+            with your browser to see the result.
+          </p>
         </div>
       </div>
     </div>
