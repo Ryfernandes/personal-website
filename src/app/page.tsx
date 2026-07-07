@@ -3,10 +3,12 @@ import RepoNav from "@/components/RepoNav";
 import RepoHeader from "@/components/RepoHeader";
 import FileExplorer from "@/components/FileExplorer";
 import Sidebar from "@/components/Sidebar";
+import IntroOverlay from "@/components/IntroOverlay";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gh-canvas">
+      <IntroOverlay />
       {/* Header + tabs — full width, gray background */}
       <div className="border-b border-gh-border bg-gh-canvas-subtle">
         <div className="px-4">
