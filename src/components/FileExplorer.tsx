@@ -71,7 +71,7 @@ export default function FileExplorer() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            className="flex items-center gap-1.5 rounded-md border border-gh-btn-border bg-gh-btn-bg px-3 py-[3px] text-sm font-medium text-gh-fg hover:bg-gh-btn-hover-bg"
+            className="flex items-center gap-1.5 rounded-md border border-gh-btn-border bg-gh-btn-bg px-3 py-[5px] text-sm font-medium text-gh-fg hover:bg-gh-btn-hover-bg"
           >
             <GitBranchIcon size={16} className="text-gh-fg-muted" />
             <span>main</span>
@@ -103,18 +103,18 @@ export default function FileExplorer() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            className="flex items-center gap-1.5 rounded-md border border-gh-btn-border bg-gh-btn-bg px-3 py-[3px] text-sm text-gh-fg hover:bg-gh-btn-hover-bg"
+            className="flex w-[240px] items-center gap-1.5 rounded-md border border-gh-btn-border bg-white px-3 py-[5px] text-sm text-gh-fg shadow-[inset_0_1px_1px_rgba(0,0,0,0.04)] hover:bg-gh-btn-hover-bg"
           >
             <SearchIcon size={16} className="text-gh-fg-muted" />
             <span>Go to file</span>
-            <kbd className="ml-1 rounded border border-gh-border px-1 text-xs text-gh-fg-muted">
+            <kbd className="ml-auto rounded border border-gh-border px-1 text-xs text-gh-fg-muted">
               T
             </kbd>
           </button>
 
           <button
             type="button"
-            className="flex items-center gap-1 rounded-md border border-gh-btn-border bg-gh-btn-bg px-3 py-[3px] text-sm text-gh-fg hover:bg-gh-btn-hover-bg"
+            className="flex items-center gap-1 rounded-md border border-gh-btn-border bg-gh-btn-bg px-3 py-[5px] text-sm text-gh-fg hover:bg-gh-btn-hover-bg"
           >
             <span>Add file</span>
             <TriangleDownIcon size={16} className="text-gh-fg-muted" />
@@ -122,10 +122,10 @@ export default function FileExplorer() {
 
           <button
             type="button"
-            className="flex items-center gap-1.5 rounded-md border border-[#1b7f37] bg-gh-btn-primary-bg px-3 py-[3px] text-sm font-medium text-white hover:bg-gh-btn-primary-hover-bg"
+            className="flex items-center gap-1.5 rounded-md border border-[#1b7f37] bg-[#21883E] px-3 py-[5px] text-sm font-medium text-white hover:bg-gh-btn-primary-hover-bg"
           >
             <CodeIcon size={16} />
-            <span>&lt;&gt; Code</span>
+            <span>Code</span>
             <TriangleDownIcon size={16} />
           </button>
         </div>

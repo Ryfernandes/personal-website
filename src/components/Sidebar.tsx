@@ -1,13 +1,10 @@
 import {
-  GearIcon,
   LinkIcon,
   BookIcon,
   PulseIcon,
   StarIcon,
   EyeIcon,
   RepoForkedIcon,
-  PackageIcon,
-  RocketIcon,
 } from "@primer/octicons-react";
 
 function SectionHeader({
@@ -52,22 +49,18 @@ function StatItem({
   );
 }
 
+const languages = [
+  { name: "Python", percent: 60, color: "#3572A5" },
+  { name: "TypeScript", percent: 20, color: "#3178c6" },
+  { name: "C++", percent: 20, color: "#f34b7d" },
+];
+
 export default function Sidebar() {
   return (
     <div className="space-y-6">
       {/* About */}
       <section>
-        <SectionHeader
-          title="About"
-          action={
-            <button
-              type="button"
-              className="rounded p-1 text-gh-fg-muted hover:text-gh-fg-accent"
-            >
-              <GearIcon size={16} />
-            </button>
-          }
-        />
+        <SectionHeader title="About" />
         <div className="space-y-2">
           <a
             href="#"
@@ -94,27 +87,9 @@ export default function Sidebar() {
         <p className="text-sm text-gh-fg-muted">No releases published</p>
         <a
           href="#"
-          className="mt-1 block text-sm font-semibold text-gh-fg-accent hover:underline"
+          className="mt-1 block text-xs text-gh-fg-accent underline hover:no-underline"
         >
           Create a new release
-        </a>
-      </section>
-
-      <hr className="border-gh-border-muted" />
-
-      {/* Deployments */}
-      <section>
-        <SectionHeader title="Deployments" badge={20} />
-        <div className="flex items-center gap-2 text-sm">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-gh-fg-success" />
-          <span className="font-semibold text-gh-fg">Production</span>
-          <span className="text-gh-fg-muted">11 months ago</span>
-        </div>
-        <a
-          href="#"
-          className="mt-2 block text-sm text-gh-fg-accent hover:underline"
-        >
-          + 19 deployments
         </a>
       </section>
 
@@ -124,6 +99,53 @@ export default function Sidebar() {
       <section>
         <SectionHeader title="Packages" />
         <p className="text-sm text-gh-fg-muted">No packages published</p>
+        <a
+          href="#"
+          className="mt-1 block text-xs text-gh-fg-accent underline hover:no-underline"
+        >
+          Publish your first package
+        </a>
+      </section>
+
+      <hr className="border-gh-border-muted" />
+
+      {/* Contributors */}
+      <section>
+        <SectionHeader title="Contributors" badge={1} />
+        <a href="#" className="inline-block">
+          <img
+            src="/avatar.jpg"
+            alt="Ryfernandes"
+            className="h-8 w-8 rounded-full hover:opacity-80"
+          />
+        </a>
+      </section>
+
+      <hr className="border-gh-border-muted" />
+
+      {/* Languages */}
+      <section>
+        <SectionHeader title="Languages" />
+        <div className="mb-3 flex h-2 overflow-hidden rounded-full">
+          {languages.map((lang) => (
+            <div
+              key={lang.name}
+              style={{ width: `${lang.percent}%`, backgroundColor: lang.color }}
+            />
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {languages.map((lang) => (
+            <div key={lang.name} className="flex items-center gap-1.5 text-xs">
+              <span
+                className="inline-block h-2.5 w-2.5 rounded-full"
+                style={{ backgroundColor: lang.color }}
+              />
+              <span className="font-semibold text-gh-fg">{lang.name}</span>
+              <span className="text-gh-fg-muted">{lang.percent.toFixed(1)}%</span>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

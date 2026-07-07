@@ -17,14 +17,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Repo header — white background, constrained-width divider */}
-      <div className="mx-auto max-w-[1280px] border-b border-gh-border px-4">
+      {/* Repo header + main content */}
+      <div className="mx-auto max-w-[1280px] px-4">
         <RepoHeader />
-      </div>
-
-      {/* Main content */}
-      <div className="mx-auto max-w-[1280px] px-4 py-5">
-        <div className="flex gap-8">
+        <hr className="border-t border-gh-border" />
+        <div className="flex gap-8 py-5">
           <main className="min-w-0 flex-1">
             <FileExplorer />
           </main>
