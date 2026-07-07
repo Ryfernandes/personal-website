@@ -1,44 +1,33 @@
-'use client';
+import GitHubHeader from "@/components/GitHubHeader";
+import RepoNav from "@/components/RepoNav";
+import RepoHeader from "@/components/RepoHeader";
+import FileExplorer from "@/components/FileExplorer";
+import Sidebar from "@/components/Sidebar";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
-import './index.css';
-import AutoGallery from "@/components/AutoGallery";
-import imageCaptions from "@/utils/captions";
-
-export default function Gallery() {
-  let images: string[] = [];
-
-  const router = useRouter();
-
-  for (let i = 1; i <= 30; i++) {
-    images.push(`/assets/gallery/${i}.jpeg`);
-  }
-
-  const handleOverlayClick = () => {
-    router.push('/home');
-  };
-
+export default function Home() {
   return (
-    <div className="page-container">
-      <div className="gallery-container">
-        <AutoGallery 
-          images={images}
-          captions={imageCaptions}
-          rows={3}
-          inspect={true}
-          smallBreakpoint={{ ratio: 3, rows: 2 }}
-          xSmallBreakpoint={{ ratio: 7, rows: 1 }}
-          speed={55}
-          scale={1}
-          gap={2}
-        />
-        <div className="overlay-text" onClick={handleOverlayClick}>
-          <h1>Ryan Fernandes</h1>
-          <span className="typewriter">
-            <p>Who is this guy? →</p>
-          </span>
+    <div className="min-h-screen bg-gh-canvas">
+      {/* Header + tabs — full width, gray background */}
+      <div className="border-b border-gh-border bg-gh-canvas-subtle">
+        <div className="px-4">
+          <GitHubHeader />
+        </div>
+        <div className="px-4">
+          <RepoNav />
+        </div>
+      </div>
+
+      {/* Repo header + main content */}
+      <div className="mx-auto max-w-[1280px] px-4">
+        <RepoHeader />
+        <hr className="border-t border-gh-border" />
+        <div className="flex gap-8 py-5">
+          <main className="min-w-0 flex-1">
+            <FileExplorer />
+          </main>
+          <aside className="hidden w-[296px] shrink-0 lg:block">
+            <Sidebar />
+          </aside>
         </div>
       </div>
     </div>

@@ -1,24 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ryan Fernandes | Yale CS",
-  description: "You'll love this website almost as much as I love Justin Bieber",
+  title: "Ryan Fernandes",
+  description: "Software engineer and builder. Explore my projects, experience, and more.",
+  icons: {
+    icon: "/ryan-github-profile-picture.jpg",
+  },
 };
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-}
-
-const inter = Inter({ subsets: ["latin"] });
-
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+}>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
       <body>{children}</body>
     </html>
-  )
+  );
 }
-
-export default RootLayout;
