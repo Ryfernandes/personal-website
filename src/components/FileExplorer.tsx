@@ -230,7 +230,8 @@ export default function FileExplorer() {
 
           <p className="mb-4">
             I&apos;m a Computer Science and Electrical Engineering student at{" "}
-            <strong>Yale University</strong>{" "}with a 4.0 GPA. I&apos;m
+            <strong>Yale University</strong>{" "}with a 4.0 GPA,{" "}
+            <strong>graduating in May 2028</strong>. I&apos;m
             passionate about AI/ML engineering, open-source software, and
             building things that make an impact.
           </p>
@@ -255,6 +256,7 @@ export default function FileExplorer() {
           <p className="mb-2 text-gh-fg-muted">May 2026 – Present · Boston, MA</p>
           <ul className="mb-4 list-disc space-y-1 pl-6">
             <li>Implementing router-weighted expert pruning compression for large MoE LLMs, reducing VRAM usage up to 50%</li>
+            <li>Pruning algorithm reduces VRAM usage up to 50%, saving ~$35,000 per model server on hardware costs</li>
             <li>Building an agent-assisted Kubernetes pipeline to automate multi-day LLM evaluation workflows</li>
             <li>Contributing to vLLM&apos;s Speculative Decoding and LLM Compressor repositories (82k stars)</li>
           </ul>
@@ -267,6 +269,18 @@ export default function FileExplorer() {
             <li>Created an agentic Docling document editor, yielding a 91% time save on data postprocessing</li>
             <li>Facilitating open-source acquisition by the Docling GitHub organization (35k stars)</li>
             <li>Reduced token costs and latency by 400% through prompt caching and context compression</li>
+          </ul>
+
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
+            Education
+          </h2>
+
+          <h3 className="text-base font-semibold">Yale University</h3>
+          <p className="mb-2 text-gh-fg-muted">B.S. in Computer Science and Electrical Engineering · Expected May 2028 · New Haven, CT</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>GPA: 4.0 (4 semesters, 22 courses), SAT: 1600</li>
+            <li>Yale Computer Society Co-President, Club Spikeball Captain</li>
+            <li>Coursework: Data Structures &amp; Algorithms, Computer Architecture, Systems &amp; Signal Processing, Digital Systems, Networks, Linear Algebra, Discrete Math, Circuit Analysis &amp; Design</li>
           </ul>
 
           <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
