@@ -20,6 +20,8 @@ export default function RootLayout({
         <link rel="preload" href="/moose_silhouette_logo.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/frederick.jpeg" as="image" />
         <link rel="preload" href="/ryan-github-profile-picture.jpg" as="image" />
+        <link rel="preload" href="/screen-corner-buddy.png" as="image" />
+        <link rel="preload" href="/screen-corner-buddy-smiling.png" as="image" />
       </head>
       <body>{children}</body>
     </html>
