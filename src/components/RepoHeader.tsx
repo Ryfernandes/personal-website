@@ -4,6 +4,7 @@ import {
   StarIcon,
   TriangleDownIcon,
 } from "@primer/octicons-react";
+import { REPO_STATS } from "@/constants/repo";
 
 function CountBubble({ count }: { count: number }) {
   return (
@@ -66,7 +67,7 @@ export default function RepoHeader() {
           className="h-6 w-6 rounded-full"
         />
         <h1 className="text-[20px] font-semibold leading-tight text-gh-fg">
-          personal-website
+          ryan-hub
         </h1>
         <span className="rounded-full border border-gh-border px-[7px] py-[2px] text-xs font-medium leading-none text-gh-fg-muted">
           Public
@@ -74,9 +75,9 @@ export default function RepoHeader() {
       </div>
 
       <div className="flex items-center gap-2">
-        <WatchButton count={0} />
-        <SplitDropdownButton icon={RepoForkedIcon} label="Fork" count={0} />
-        <SplitDropdownButton icon={StarIcon} label="Star" count={0} />
+        <WatchButton count={REPO_STATS.watching} />
+        <SplitDropdownButton icon={RepoForkedIcon} label="Fork" count={REPO_STATS.forks} />
+        <SplitDropdownButton icon={StarIcon} label="Star" count={REPO_STATS.stars} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   GitBranchIcon,
   TagIcon,
@@ -12,6 +13,7 @@ import {
   PencilIcon,
   ListUnorderedIcon,
 } from "@primer/octicons-react";
+import ConfettiRow from "./ConfettiRow";
 
 interface FileRowProps {
   type: "dir" | "file";
@@ -21,6 +23,7 @@ interface FileRowProps {
 }
 
 function FileRow({ type, name, message, date }: FileRowProps) {
+  const href = name === "resume.pdf" ? "/resume" : "#";
   return (
     <div className="group flex items-center border-t border-gh-border-muted px-4 py-[10px] hover:bg-gh-canvas-subtle">
       <div className="flex w-[180px] shrink-0 items-center gap-2 pr-2">
@@ -30,7 +33,7 @@ function FileRow({ type, name, message, date }: FileRowProps) {
           <FileIcon size={16} className="shrink-0 text-gh-file-icon" />
         )}
         <a
-          href="#"
+          href={href}
           className="truncate text-sm font-medium text-gh-fg hover:text-gh-fg-accent hover:underline"
         >
           {name}
@@ -38,7 +41,7 @@ function FileRow({ type, name, message, date }: FileRowProps) {
       </div>
       <div className="min-w-0 flex-1 overflow-hidden pr-4">
         <a
-          href="#"
+          href={href}
           className="block truncate text-sm text-gh-fg-muted hover:text-gh-fg-accent hover:underline"
         >
           {message}
@@ -53,14 +56,10 @@ function FileRow({ type, name, message, date }: FileRowProps) {
 
 export default function FileExplorer() {
   const files: FileRowProps[] = [
-    { type: "dir", name: "public", message: "Updated Resume 8-26", date: "11 months ago" },
-    { type: "dir", name: "src", message: "Updated link for document conversion pipeline", date: "last year" },
-    { type: "file", name: ".gitignore", message: "The beginning: justinbieber", date: "last year" },
-    { type: "file", name: "README.md", message: "The beginning: justinbieber", date: "last year" },
-    { type: "file", name: "next.config.ts", message: "Vibe coded gallery component w/ title + simple test imple...", date: "last year" },
-    { type: "file", name: "package-lock.json", message: "Simplified the gallery page and added start of home page", date: "last year" },
-    { type: "file", name: "package.json", message: "Simplified the gallery page and added start of home page", date: "last year" },
-    { type: "file", name: "tsconfig.json", message: "The beginning: justinbieber", date: "last year" },
+    { type: "dir", name: "projects", message: "Coming soon!", date: "12 hours ago" },
+    { type: "dir", name: "src", message: "Remaking GitHub...", date: "1 day ago" },
+    { type: "file", name: "README.md", message: "Some short words about me", date: "1 day ago" },
+    { type: "file", name: "resume.pdf", message: "Fresh off the press! Read it here!", date: "1 day ago" },
   ];
 
   return (
@@ -151,7 +150,7 @@ export default function FileExplorer() {
               href="#"
               className="truncate text-sm text-gh-fg hover:text-gh-fg-accent hover:underline"
             >
-              Updated Resume 8-26
+              Remaking GitHub...
             </a>
             <CheckIcon
               size={16}
@@ -167,7 +166,7 @@ export default function FileExplorer() {
               21cb674
             </a>
             <span>·</span>
-            <span>11 months ago</span>
+            <span>1 day ago</span>
             <a
               href="#"
               className="ml-2 flex items-center gap-1 text-gh-fg-muted hover:text-gh-fg-accent"
@@ -179,8 +178,13 @@ export default function FileExplorer() {
         </div>
 
         {/* File rows */}
-        {files.map((file) => (
-          <FileRow key={file.name} {...file} />
+        {files.map((file, i) => (
+          <React.Fragment key={file.name}>
+            <FileRow {...file} />
+            {i === 2 && (
+              <ConfettiRow message="A bit of personality" date="8 hours ago" />
+            )}
+          </React.Fragment>
         ))}
 
       </div>
@@ -211,36 +215,99 @@ export default function FileExplorer() {
         </div>
 
         {/* README content */}
-        <div className="px-10 py-8">
-          <p className="text-sm leading-relaxed text-gh-fg">
-            This is a{" "}
-            <a href="#" className="font-semibold text-gh-fg-accent hover:underline">
-              Next.js
-            </a>{" "}
-            project bootstrapped with{" "}
-            <a href="#" className="text-gh-fg-accent hover:underline">
-              <code className="rounded bg-gh-neutral-muted px-1.5 py-0.5 text-sm">
-                create-next-app
-              </code>
-            </a>
-            .
+        <div className="px-10 py-8 text-sm leading-relaxed text-gh-fg">
+          <h1 className="mb-4 border-b border-gh-border pb-2 text-[2em] font-semibold">
+            Ryan Fernandes
+          </h1>
+
+          <p className="mb-4">
+            Welcome to <strong>RyanHub</strong>! Easily mistaken for its digital
+            doppelganger, GitHub, I have recently created RyanHub as a place to
+            practice my skills, be creative, and show off my work. There
+            isn&apos;t much here at the moment aside from the skeleton, but
+            expect plenty of features and easter eggs to come soon.
           </p>
 
-          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-2xl font-semibold">
-            Getting Started
-          </h2>
-          <p className="mb-4 text-sm leading-relaxed text-gh-fg">
-            First, run the development server:
+          <p className="mb-4">
+            I&apos;m a Computer Science and Electrical Engineering student at{" "}
+            <strong>Yale University</strong>{" "}with a 4.0 GPA,{" "}
+            <strong>graduating in May 2028</strong>. I&apos;m
+            passionate about AI/ML engineering, open-source software, and
+            building things that make an impact.
           </p>
-          <pre className="mb-4 overflow-x-auto rounded-md bg-gh-canvas-subtle p-4 text-sm leading-relaxed">
-            <code className="font-gh-mono text-gh-fg">npm run dev</code>
-          </pre>
-          <p className="text-sm leading-relaxed text-gh-fg">
-            Open{" "}
-            <a href="#" className="text-gh-fg-accent hover:underline">
-              http://localhost:3000
-            </a>{" "}
-            with your browser to see the result.
+
+          <p className="mb-6">
+            <a href="mailto:ryan@fernandes.us" className="text-gh-fg-accent hover:underline">ryan@fernandes.us</a>
+            {" · "}
+            <a href="https://github.com/Ryfernandes" className="text-gh-fg-accent hover:underline">GitHub</a>
+            {" · "}
+            <a href="https://www.linkedin.com/in/ryan-fernandes-088109284/" className="text-gh-fg-accent hover:underline">LinkedIn</a>
+            {" · "}
+            <a href="/resume" className="text-gh-fg-accent hover:underline">Resume</a>
+          </p>
+
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
+            Experience
+          </h2>
+
+          <h3 className="text-base font-semibold">
+            Neural Magic — AI Engineering Intern, vLLM
+          </h3>
+          <p className="mb-2 text-gh-fg-muted">May 2026 – Present · Boston, MA</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>Implementing router-weighted expert pruning compression for large MoE LLMs, reducing VRAM usage up to 50%</li>
+            <li>Pruning algorithm reduces VRAM usage up to 50%, saving ~$35,000 per model server on hardware costs</li>
+            <li>Building an agent-assisted Kubernetes pipeline to automate multi-day LLM evaluation workflows</li>
+            <li>Contributing to vLLM&apos;s Speculative Decoding and LLM Compressor repositories (82k stars)</li>
+          </ul>
+
+          <h3 className="text-base font-semibold">
+            Red Hat, IBM — Software Engineering Intern
+          </h3>
+          <p className="mb-2 text-gh-fg-muted">May 2025 – August 2025 · Boston, MA</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>Created an agentic Docling document editor, yielding a 91% time save on data postprocessing</li>
+            <li>Facilitating open-source acquisition by the Docling GitHub organization (35k stars)</li>
+            <li>Reduced token costs and latency by 400% through prompt caching and context compression</li>
+          </ul>
+
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
+            Education
+          </h2>
+
+          <h3 className="text-base font-semibold">Yale University</h3>
+          <p className="mb-2 text-gh-fg-muted">B.S. in Computer Science and Electrical Engineering · Expected May 2028 · New Haven, CT</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>GPA: 4.0 (4 semesters, 22 courses), SAT: 1600</li>
+            <li>Yale Computer Society Co-President, Club Spikeball Captain</li>
+            <li>Coursework: Data Structures &amp; Algorithms, Computer Architecture, Systems &amp; Signal Processing, Digital Systems, Networks, Linear Algebra, Discrete Math, Circuit Analysis &amp; Design</li>
+          </ul>
+
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
+            Projects
+          </h2>
+
+          <h3 className="text-base font-semibold">Yale Computer Society</h3>
+          <p className="mb-2 text-gh-fg-muted">Co-President, Team Lead of y/labs · Sept 2024 – May 2026</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>Ran Yale&apos;s largest CS organization — 300 members, 20,000+ users across 7 products</li>
+            <li>Drove $19,000 in corporate sponsorships (9.5x increase), managed a $30,000 budget</li>
+            <li>Created y/labs, an automated research discovery platform connecting 500+ students and professors</li>
+          </ul>
+
+          <h3 className="text-base font-semibold">Robotic Die Rotator</h3>
+          <p className="mb-2 text-gh-fg-muted">April 2026 – Present</p>
+          <ul className="mb-4 list-disc space-y-1 pl-6">
+            <li>Built an autonomous Arduino system to rotate a playing die to any specified orientation</li>
+            <li>Wrote a C++ computer vision algorithm with 98% accuracy on a custom 200-image dataset</li>
+            <li>Incorporating into a full assembly line to create pixelated murals from 5,000+ dice</li>
+          </ul>
+
+          <h2 className="mb-4 mt-6 border-b border-gh-border pb-2 text-[1.5em] font-semibold">
+            Skills
+          </h2>
+          <p>
+            Python · PyTorch · NumPy · Pandas · Machine Learning · LLM Optimization · Agentic Applications · MCP · Fullstack Web Development · React/TypeScript · Kubernetes · C/C++ · MATLAB · Solidworks · Git
           </p>
         </div>
       </div>
