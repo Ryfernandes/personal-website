@@ -39,7 +39,7 @@ export default function GitHubHeader() {
             href="/"
             className="font-bold text-gh-fg hover:underline"
           >
-            personal-website
+            ryan-hub
           </a>
           <TriangleDownIcon
             size={16}

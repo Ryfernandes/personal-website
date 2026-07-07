@@ -6,6 +6,7 @@ import {
   EyeIcon,
   RepoForkedIcon,
 } from "@primer/octicons-react";
+import { REPO_STATS } from "@/constants/repo";
 
 function SectionHeader({
   title,
@@ -73,9 +74,9 @@ export default function Sidebar() {
           <StatItem icon={PulseIcon} label="Activity" />
         </div>
         <div className="mt-3 space-y-1">
-          <StatItem icon={StarIcon} label="0 stars" />
-          <StatItem icon={EyeIcon} label="0 watching" />
-          <StatItem icon={RepoForkedIcon} label="0 forks" />
+          <StatItem icon={StarIcon} label={`${REPO_STATS.stars} stars`} />
+          <StatItem icon={EyeIcon} label={`${REPO_STATS.watching} watching`} />
+          <StatItem icon={RepoForkedIcon} label={`${REPO_STATS.forks} forks`} />
         </div>
       </section>
 
