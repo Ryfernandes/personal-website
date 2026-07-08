@@ -239,9 +239,9 @@ export default function FileExplorer() {
           <p className="mb-6">
             <a href="mailto:ryan@fernandes.us" className="text-gh-fg-accent hover:underline">ryan@fernandes.us</a>
             {" · "}
-            <a href="https://github.com/Ryfernandes" className="text-gh-fg-accent hover:underline">GitHub</a>
+            <a href="https://github.com/Ryfernandes" target="_blank" rel="noopener noreferrer" className="text-gh-fg-accent hover:underline">GitHub</a>
             {" · "}
-            <a href="https://www.linkedin.com/in/ryan-fernandes-088109284/" className="text-gh-fg-accent hover:underline">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/ryan-fernandes-088109284/" target="_blank" rel="noopener noreferrer" className="text-gh-fg-accent hover:underline">LinkedIn</a>
             {" · "}
             <a href="/resume" className="text-gh-fg-accent hover:underline">Resume</a>
           </p>
@@ -255,7 +255,7 @@ export default function FileExplorer() {
           </h3>
           <p className="mb-2 text-gh-fg-muted">May 2026 – Present · Boston, MA</p>
           <ul className="mb-4 list-disc space-y-1 pl-6">
-            <li>Implementing router-weighted expert pruning compression for large MoE LLMs, reducing VRAM usage up to 50%</li>
+            <li>Implemented <a href="https://github.com/vllm-project/llm-compressor/tree/main/examples/reap_expert_pruning" target="_blank" rel="noopener noreferrer" className="text-gh-fg-accent hover:underline">router-weighted expert pruning</a> compression for large MoE LLMs, reducing VRAM usage up to 50%</li>
             <li>Pruning algorithm reduces VRAM usage up to 50%, saving ~$35,000 per model server on hardware costs</li>
             <li>Building an agent-assisted Kubernetes pipeline to automate multi-day LLM evaluation workflows</li>
             <li>Contributing to vLLM&apos;s Speculative Decoding and LLM Compressor repositories (82k stars)</li>
@@ -266,7 +266,7 @@ export default function FileExplorer() {
           </h3>
           <p className="mb-2 text-gh-fg-muted">May 2025 – August 2025 · Boston, MA</p>
           <ul className="mb-4 list-disc space-y-1 pl-6">
-            <li>Created an agentic Docling document editor, yielding a 91% time save on data postprocessing</li>
+            <li>Created an <a href="https://developers.redhat.com/articles/2025/08/20/how-i-built-agentic-application-docling-mcp" target="_blank" rel="noopener noreferrer" className="text-gh-fg-accent hover:underline">agentic Docling document editor</a>, yielding a 91% time save on data postprocessing</li>
             <li>Facilitating open-source acquisition by the Docling GitHub organization (35k stars)</li>
             <li>Reduced token costs and latency by 400% through prompt caching and context compression</li>
           </ul>
@@ -279,7 +279,7 @@ export default function FileExplorer() {
           <p className="mb-2 text-gh-fg-muted">B.S. in Computer Science and Electrical Engineering · Expected May 2028 · New Haven, CT</p>
           <ul className="mb-4 list-disc space-y-1 pl-6">
             <li>GPA: 4.0 (4 semesters, 22 courses), SAT: 1600</li>
-            <li>Yale Computer Society Co-President, Club Spikeball Captain</li>
+            <li><a href="https://yalecomputersociety.org/" target="_blank" rel="noopener noreferrer" className="text-gh-fg-accent hover:underline">Yale Computer Society</a> Co-President, Club Spikeball Captain</li>
             <li>Coursework: Data Structures &amp; Algorithms, Computer Architecture, Systems &amp; Signal Processing, Digital Systems, Networks, Linear Algebra, Discrete Math, Circuit Analysis &amp; Design</li>
           </ul>
 
