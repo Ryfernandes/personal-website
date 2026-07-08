@@ -24,6 +24,7 @@ export default function GitHubHeader() {
             alt="Home"
             width={32}
             height={32}
+            fetchPriority="high"
           />
         </a>
 
